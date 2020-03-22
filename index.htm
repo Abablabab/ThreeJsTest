@@ -20,7 +20,7 @@
 
 			//import Stats from 'https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.js';
 
-			//import { ColladaLoader } from './jsm/loaders/ColladaLoader.js';
+			import { ColladaLoader } from './ColladaLoader.js';
 
 			var container, stats, clock;
 			var camera, scene, renderer, elf;
@@ -50,7 +50,6 @@
 
 				// collada
 
-                var ColladaLoader = require('three-collada-loader');
 				var loader = new ColladaLoader( loadingManager );
 				loader.load( './elf.dae', function ( collada ) {
 
