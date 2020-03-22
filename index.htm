@@ -50,8 +50,8 @@
 
 				// collada
 
-                var loader = require('three-collada-loader');
-				//var loader = new ColladaLoader( loadingManager );
+                var ColladaLoader = require('three-collada-loader');
+				var loader = new ColladaLoader( loadingManager );
 				loader.load( './elf.dae', function ( collada ) {
 
 					elf = collada.scene;
