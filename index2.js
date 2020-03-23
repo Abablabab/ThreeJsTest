@@ -73,3 +73,4 @@ function render() {
     requestAnimationFrame(render);
 }
 
+init();
