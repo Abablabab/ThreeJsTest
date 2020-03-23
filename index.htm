@@ -17,10 +17,9 @@
 		<script type="module">
 
 			import * as THREE from './modules/three.module.js';
-
 			import Stats from './modules/stats.module.js';
-
-			import { ColladaLoader } from './modules/ColladaLoader.js';
+			import ColladaLoader from './modules/ColladaLoader.js';
+            import OrbitControls from './modules/OrbitControls.js';
 
 			var container, stats, clock;
 			var camera, scene, renderer, elf;
@@ -32,6 +31,7 @@
 
 				container = document.getElementById( 'container' );
 
+                // (fov,aspect,near,far)
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 2000 );
 				camera.position.set( 8, 10, 8 );
 				camera.lookAt( 0, 3, 0 );
@@ -39,6 +39,11 @@
 				scene = new THREE.Scene();
 
 				clock = new THREE.Clock();
+
+                // Add some controls
+                const controls = new OrbitControls(camera, scene);
+                controls.target.set(0,5,0);
+                controls.update(); // what even is this?
 
 				// loading manager
 
@@ -57,7 +62,7 @@
 
 				} );
 
-				//
+				// Lighting
 
 				var ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
 				scene.add( ambientLight );
@@ -66,19 +71,19 @@
 				directionalLight.position.set( 1, 1, 0 ).normalize();
 				scene.add( directionalLight );
 
-				//
+				// Size in preparation for render
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
-				//
+				// Add Stats for FPS view
 
 				stats = new Stats();
 				container.appendChild( stats.dom );
 
-				//
+				// Manage resizes when they occur
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
