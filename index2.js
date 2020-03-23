@@ -56,9 +56,6 @@ scene.background = new THREE.Color('blue');
     scene.add(light);
 }
 
-// And at last kicking off the rendering
-requestAnimationFrame(render);
-
 function doNeedResize(renderer) {
     const canvas = renderer.domElement;
     const width = canvas.clientWidth;
