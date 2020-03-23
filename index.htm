@@ -41,8 +41,8 @@
 				clock = new THREE.Clock();
 
                 // Add some controls
-                const controls = new OrbitControls(camera, scene);
-                controls.target.set(0,5,0);
+                const controls = new OrbitControls(camera, container);
+                controls.target.set(0,3,0);
                 controls.update(); // what even is this?
 
 				// loading manager
