@@ -41,7 +41,7 @@ scene.background = new THREE.Color('blue');
         map: texture,
         side: THREE.DoubleSide,
     });
-    const mesh = new THREE.Mesh(planeGeo,planeMat);
+    const mesh = new THREE.Mesh(planeGeometry,planeMaterial);
     mesh.rotation.x = Math.Pi * -.5; // Great, radian maths.
 
     scene.add(mesh);
