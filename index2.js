@@ -1,5 +1,5 @@
 import * as THREE from './modules/three.module.js';
-//import {ColladaLoader} from './modules/ColladaLoader.js';
+import {ColladaLoader} from './modules/ColladaLoader.js';
 import {OrbitControls} from './modules/OrbitControls.js';
 
 var camera, controls, scene, renderer;
@@ -46,6 +46,15 @@ function init() {
         mesh.matrixAutoUpdate = false;
         scene.add( mesh );
     }
+    
+    // Load Model(s)
+    var loadingManager = new THREE.LoadingManager( function () {
+        scene.add( elf );
+    } );
+    var loader = new ColladaLoader( loadingManager );
+    loader.load( './model/elf.dae', function ( collada ) {
+        elf = collada.scene;
+	} );
 
 	// lights
     var light = new THREE.DirectionalLight( 0xffffff );
