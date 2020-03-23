@@ -19,7 +19,8 @@ function init() {
     document.body.appendChild( renderer.domElement );
 
     camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 4000 );
-    camera.position.set( 0, 2, 0 );
+    camera.position.set(0,10,10);
+    camera.lookAt(0,5,0);
 
     // controls
     controls = new OrbitControls( camera, renderer.domElement );
@@ -28,9 +29,9 @@ function init() {
     controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
     controls.dampingFactor = 0.05;
     controls.screenSpacePanning = false;
-    controls.minDistance = 2;
-    controls.maxDistance = 5000;
-    //controls.maxPolarAngle = Math.PI / 2;
+    controls.minDistance = 10;
+    controls.maxDistance = 1000;
+    controls.maxPolarAngle = Math.PI / 2;
     
     // Load Model(s)
     var elf;
