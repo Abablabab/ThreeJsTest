@@ -22,7 +22,7 @@ function init() {
     camera.position.set( 0, 0, 0 );
 
     // controls
-	controls = new OrbitControls( camera, renderer.domElement );
+    controls = new OrbitControls( camera, renderer.domElement );
     
     //controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
     controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
@@ -30,12 +30,12 @@ function init() {
     controls.screenSpacePanning = false;
     controls.minDistance = 2;
     controls.maxDistance = 5000;
-    controls.maxPolarAngle = Math.PI / 2;
+    //controls.maxPolarAngle = Math.PI / 2;
     
     // Load Model(s)
     var elf;
     var loadingManager = new THREE.LoadingManager( function () {
-        scene.add( elf );
+        scene.add( elf );   
     } );
     var loader = new ColladaLoader( loadingManager );
     loader.load( './model/elf.dae', function ( collada ) {
