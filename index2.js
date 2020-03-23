@@ -43,7 +43,7 @@ function init() {
     } );
 
     // lights
-    var light = new THREE.AmbientLight( 0x222222 );
+    var light = new THREE.AmbientLight( 0x404040 );
     scene.add( light );
 
     //
