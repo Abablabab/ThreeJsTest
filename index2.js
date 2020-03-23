@@ -4,7 +4,7 @@ import {OrbitControls} from './modules/OrbitControls.js';
 
 // First we need to set up Three
 const canvas = document.querySelector('#c');
-const renderer = new THREE.WebGlRenderer({canvas});
+const renderer = new THREE.WebGLRenderer({canvas});
 
 // Define camera params and create
 const fov = 45;
@@ -42,7 +42,7 @@ scene.background = new THREE.Colour('blue');
         side: THREE.DoubleSide,
     });
     const mesh = new THREE.Mesh(planeGeo,planeMat);
-    mesh.rotation.x = Math.Pi * -.5; // Great, radian maths. 
+    mesh.rotation.x = Math.Pi * -.5; // Great, radian maths.
 
     scene.add(mesh);
 }
