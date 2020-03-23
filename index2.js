@@ -12,7 +12,6 @@ function init() {
     // Three setup
     scene = new THREE.Scene();
     scene.background = new THREE.Color( 0xcccccc );
-    scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
 
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
@@ -22,15 +21,15 @@ function init() {
     camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
     camera.position.set( 400, 200, 0 );
 
-	// controls
+    // controls
 	controls = new OrbitControls( camera, renderer.domElement );
-
-	//controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
+    
+    //controls.addEventListener( 'change', render ); // call this only in static scenes (i.e., if there is no animation loop)
     controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
     controls.dampingFactor = 0.05;
     controls.screenSpacePanning = false;
-    controls.minDistance = 100;
-    controls.maxDistance = 500;
+    controls.minDistance = 10;
+    controls.maxDistance = 5000;
     controls.maxPolarAngle = Math.PI / 2;
 
     // world
