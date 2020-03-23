@@ -1,6 +1,6 @@
 import * as THREE from './modules/three.module.js';
 //import {ColladaLoader} from './modules/ColladaLoader.js';
-import {OrbitControls} from './modules/OrbitControls.js';
+//import {OrbitControls} from './modules/OrbitControls.js';
 
 function init() {
     // First we need to set up Three
@@ -16,9 +16,9 @@ function init() {
     camera.position.set(0,10,0);
 
     // Set up some controls
-    const controls = new OrbitControls(camera, canvas);
-    controls.target.set(0, 5, 0);
-    controls.update();
+    //const controls = new OrbitControls(camera, canvas);
+    //controls.target.set(0, 5, 0);
+    //controls.update();
 
     // Now set up the scene
     const scene = new THREE.Scene();
@@ -56,28 +56,20 @@ function init() {
         const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
         scene.add(light);
     }
+}
 
-    function doNeedResize(renderer) {
+function render() {
+    const canvas = renderer.domElement;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+    const needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+        renderer.setSize(width, height, false);
         const canvas = renderer.domElement;
-        const width = canvas.clientWidth;
-        const height = canvas.clientHeight;
-        const needResize = canvas.width !== width || canvas.height !== height;
-        if (needResize) {
-          renderer.setSize(width, height, false);
-        }
-        return needResize;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
     }
-
-    function render() {
-        if (doNeedResize(renderer)) {
-            const canvas = renderer.domElement;
-            camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            camera.updateProjectionMatrix();
-        }
-        renderer,render(scene, camera);
-        requestAnimationFrame(render);
-    }
+    renderer,render(scene, camera);
     requestAnimationFrame(render);
 }
-init();
 
