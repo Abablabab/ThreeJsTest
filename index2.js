@@ -19,7 +19,7 @@ function init() {
     document.body.appendChild( renderer.domElement );
 
     camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 4000 );
-    camera.position.set( 0, 0, 0 );
+    camera.position.set( 0, 0, 20 );
 
     // controls
     controls = new OrbitControls( camera, renderer.domElement );
