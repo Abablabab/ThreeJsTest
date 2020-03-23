@@ -47,6 +47,18 @@ scene.background = new THREE.Color('blue');
     scene.add(mesh);
 }
 
+// Now we need lights to see what we're doing
+{
+    const skyColor = 0xB1E1FF;  // light blue
+    const groundColor = 0xB97A20;  // brownish orange
+    const intensity = 1;
+    const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
+    scene.add(light);
+}
+
+// And at last kicking off the rendering
+requestAnimationFrame(render);
+
 function doNeedResize(renderer) {
     const canvas = renderer.domElement;
     const width = canvas.clientWidth;
