@@ -28,23 +28,9 @@ function init() {
     controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
     controls.dampingFactor = 0.05;
     controls.screenSpacePanning = false;
-    controls.minDistance = 10;
+    controls.minDistance = 2;
     controls.maxDistance = 5000;
     controls.maxPolarAngle = Math.PI / 2;
-
-    // world
-    var geometry = new THREE.CylinderBufferGeometry( 0, 10, 30, 4, 1 );
-	var material = new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } );
-
-    for ( var i = 0; i < 500; i ++ ) {
-        var mesh = new THREE.Mesh( geometry, material );
-        mesh.position.x = Math.random() * 1600 - 800;
-        mesh.position.y = 0;
-        mesh.position.z = Math.random() * 1600 - 800;
-        mesh.updateMatrix();
-        mesh.matrixAutoUpdate = false;
-        scene.add( mesh );
-    }
     
     // Load Model(s)
     var loadingManager = new THREE.LoadingManager( function () {
