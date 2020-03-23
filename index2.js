@@ -55,11 +55,11 @@ function doNeedResize(renderer) {
     if (needResize) {
       renderer.setSize(width, height, false);
     }
-    return needResize;    
+    return needResize;
 }
 
 function render() {
-    if (doNeedResize(renderer) {
+    if (doNeedResize(renderer)) {
         const canvas = renderer.domElement;
         camera.aspect = canvas.clientWidth / canvas.clientHeight;
         camera.updateProjectionMatrix();
