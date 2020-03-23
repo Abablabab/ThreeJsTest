@@ -33,15 +33,16 @@ function init() {
     controls.maxPolarAngle = Math.PI / 2;
     
     // Load Model(s)
+    var elf;
     var loadingManager = new THREE.LoadingManager( function () {
         scene.add( elf );
     } );
     var loader = new ColladaLoader( loadingManager );
     loader.load( './model/elf.dae', function ( collada ) {
         elf = collada.scene;
-	} );
+    } );
 
-	// lights
+    // lights
     var light = new THREE.DirectionalLight( 0xffffff );
     light.position.set( 1, 1, 1 );
     scene.add( light );
