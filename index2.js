@@ -21,7 +21,7 @@ controls.update();
 
 // Now set up the scene
 const scene = new THREE.Scene();
-scene.background = new THREE.Colour('blue');
+scene.background = new THREE.Color('blue');
 
 // Give us a checkerboard base to orientate from
 {
