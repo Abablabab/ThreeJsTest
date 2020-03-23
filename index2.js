@@ -56,29 +56,28 @@ function init() {
         const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
         scene.add(light);
     }
-}
 
-function doNeedResize(renderer) {
-    const canvas = renderer.domElement;
-    const width = canvas.clientWidth;
-    const height = canvas.clientHeight;
-    const needResize = canvas.width !== width || canvas.height !== height;
-    if (needResize) {
-      renderer.setSize(width, height, false);
-    }
-    return needResize;
-}
-
-function render() {
-    if (doNeedResize(renderer)) {
+    function doNeedResize(renderer) {
         const canvas = renderer.domElement;
-        camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        camera.updateProjectionMatrix();
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const needResize = canvas.width !== width || canvas.height !== height;
+        if (needResize) {
+          renderer.setSize(width, height, false);
+        }
+        return needResize;
     }
-    renderer,render(scene, camera);
+
+    function render() {
+        if (doNeedResize(renderer)) {
+            const canvas = renderer.domElement;
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectionMatrix();
+        }
+        renderer,render(scene, camera);
+        requestAnimationFrame(render);
+    }
     requestAnimationFrame(render);
 }
-
 init();
-requestAnimationFrame(render);
 
